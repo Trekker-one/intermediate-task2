@@ -12,16 +12,18 @@ namespace producer_service
 {
     class Program
     {
+        private static System.Timers.Timer timer;
+
         static void Main(string[] args)
         {
-            System.Timers.Timer timer = new System.Timers.Timer();
-            timer.Interval = 900000;
+            timer = new System.Timers.Timer();
+            timer.AutoReset = false;
             timer.Elapsed += producerEvent;
             timer.Start();
 
             Console.WriteLine(" Press [enter] to exit.");
-            Console.Write(Environment.GetEnvironmentVariable("RABBITMQ_HOST") + ": " +
-                Environment.GetEnvironmentVariable("RABBITMQ_PORT"));
+            //Console.Write(Environment.GetEnvironmentVariable("RABBITMQ_HOST") + ": " +
+            //    Environment.GetEnvironmentVariable("RABBITMQ_PORT"));
             Console.ReadLine();
         }
 
@@ -65,6 +67,10 @@ namespace producer_service
 
                 Console.WriteLine(" [x] Sent {0}", JsonConvert.SerializeObject(contentJson));
             }
+
+            timer.Stop();
+            timer.Interval = 9000000; //Set new interval here 15mins
+            timer.Start();
         }
     }
 }
