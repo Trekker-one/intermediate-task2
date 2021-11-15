@@ -15,16 +15,19 @@ namespace producer_service
         static void Main(string[] args)
         {
             System.Timers.Timer timer = new System.Timers.Timer();
-            timer.Interval = 1000;
+            timer.Interval = 900000;
             timer.Elapsed += producerEvent;
             timer.Start();
 
             Console.WriteLine(" Press [enter] to exit.");
+            Console.Write(Environment.GetEnvironmentVariable("RABBITMQ_HOST") + ": " +
+                Environment.GetEnvironmentVariable("RABBITMQ_PORT"));
             Console.ReadLine();
         }
 
         static void producerEvent(object sender, System.Timers.ElapsedEventArgs e)
         {
+            Console.WriteLine("Start Timer!");
             var client = new RestClient("https://api.coindesk.com/");
             var request = new RestRequest("/v1/bpi/currentprice.json", Method.GET);
 
@@ -51,14 +54,15 @@ namespace producer_service
                                      exclusive: false,
                                      autoDelete: false,
                                      arguments: null);
-
+                
 
                 var body = Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(contentJson));
 
                 channel.BasicPublish(exchange: "",
-                                     routingKey: "TaskQueue",
+                                     routingKey: "Bpi",
                                      basicProperties: null,
                                      body: body);
+
                 Console.WriteLine(" [x] Sent {0}", JsonConvert.SerializeObject(contentJson));
             }
         }

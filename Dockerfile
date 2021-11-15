@@ -2,17 +2,18 @@
 
 FROM mcr.microsoft.com/dotnet/aspnet:5.0 AS base
 WORKDIR /app
-EXPOSE 5000
+EXPOSE 80
 ENV RABBITMQ_HOST localhost
 ENV RABBITMQ_PORT 5672 
 ENV ASPNETCORE_ENVIRONMENT=Development
 
 FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
 WORKDIR /src
+COPY *.sln ./
 COPY ["producer-service.csproj", "."]
 RUN dotnet restore "producer-service.csproj"
 COPY . .
-WORKDIR "/src/."
+WORKDIR "/src/"
 RUN dotnet build "producer-service.csproj" -c Release -o /app/build
 
 FROM build AS publish
