@@ -1,0 +1,14 @@
+{
+  "version": 2,
+  "dgSpecHash": "qmMlQL/w1AOyg5brFRj/N2R84dTRq46S/NBaGywUoAFitLsZUi6wINa49vdLAz51jzaboO4GUHh7RlM2Ya0tOA==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Huang Yuzhe\\OneDrive\\Desktop\\Task2 - Producer API\\producer-service\\producer-service.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Huang Yuzhe\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512",
+    "C:\\Users\\Huang Yuzhe\\.nuget\\packages\\rabbitmq.client\\6.2.2\\rabbitmq.client.6.2.2.nupkg.sha512",
+    "C:\\Users\\Huang Yuzhe\\.nuget\\packages\\restsharp\\106.13.0\\restsharp.106.13.0.nupkg.sha512",
+    "C:\\Users\\Huang Yuzhe\\.nuget\\packages\\system.memory\\4.5.4\\system.memory.4.5.4.nupkg.sha512",
+    "C:\\Users\\Huang Yuzhe\\.nuget\\packages\\system.threading.channels\\4.7.1\\system.threading.channels.4.7.1.nupkg.sha512"
+  ],
+  "logs": []
+}
