@@ -16,6 +16,8 @@ namespace producer_service
 
         static void Main(string[] args)
         {
+            Environment.SetEnvironmentVariable("RABBITMQ_HOST", "localhost");
+            Environment.SetEnvironmentVariable("RABBITMQ_PORT", "5672");
             timer = new System.Timers.Timer();
             timer.AutoReset = false;
             timer.Elapsed += producerEvent;
