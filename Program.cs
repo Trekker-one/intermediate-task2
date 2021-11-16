@@ -71,7 +71,7 @@ namespace producer_service
             }
 
             timer.Stop();
-            timer.Interval = 9000000; //Set new interval here 15mins
+            timer.Interval = 900000; //Set new interval here 15mins
             timer.Start();
         }
     }
